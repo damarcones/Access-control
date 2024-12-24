@@ -11,9 +11,9 @@ package com.desafio.backend.agenda.Enums;
  */
 public enum TipoTelefoneEnum {
 
-    residencial("\\d{11}"),
-    comercial("\\d{11}"),
-    celular("\\d{11}");
+    residencial("^(\\d{10})$"),
+    comercial("^(\\d{10})$"),
+    celular("^(\\d{11})");
 
     private final String regex;
 

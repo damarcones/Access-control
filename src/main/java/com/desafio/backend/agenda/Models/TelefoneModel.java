@@ -1,16 +1,18 @@
 package com.desafio.backend.agenda.Models;
 
 import com.desafio.backend.agenda.Enums.TipoTelefoneEnum;
+import com.desafio.backend.agenda.Validacao.ValidaTelefone;
 
 /**
  *
  * @author damarcones
  */
+@ValidaTelefone
 public class TelefoneModel {
 
     private TipoTelefoneEnum tipo;
 
-    String telefone;
+    private String telefone;
 
     public TipoTelefoneEnum getTipo() {
         return tipo;
