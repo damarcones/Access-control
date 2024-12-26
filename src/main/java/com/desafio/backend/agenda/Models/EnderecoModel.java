@@ -1,20 +1,53 @@
 package com.desafio.backend.agenda.Models;
 
+import java.io.Serializable;
+
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
+import jakarta.persistence.Table;
 import jakarta.validation.constraints.Pattern;
 
 /**
  *
  * @author damarcones
  */
-public class EnderecoModel {
 
-    @Pattern(regexp = "^\\d{5}-?\\d{3}$", message = "O CEP deve conter exatamente 8 dígitos.")
+@Entity
+@Table(name = "endereco")
+public class EnderecoModel implements Serializable{
+    
+    @Id
+    private long id;
+    @Pattern(regexp = "(^\\d{8})", message = "O CEP deve conter exatamente 8 dígitos.")
     private String cep;
+   
     private String logradouro;
     private String complemento;
+
     private String bairro;
+  
     private String localidade;
     private String uf;
+    
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "cpf",  nullable = false)
+    private PessoaModel pessoa;
+    
+    public PessoaModel getPessoa() {
+        return pessoa;
+    }
+    public void setPessoa(PessoaModel pessoa) {
+        this.pessoa = pessoa;
+    }
+    public long getId() {
+        return id;
+    }
+    public void setId(long id) {
+        this.id = id;
+    }
     public String getCep() {
         return cep;
     }

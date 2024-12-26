@@ -1,38 +1,56 @@
 package com.desafio.backend.agenda.Models;
 
+import java.io.Serializable;
+import java.util.List;
+
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
+import jakarta.persistence.Table;
 import jakarta.validation.constraints.Pattern;
 
 /**
  *
  * @author damarcones
  */
-public class PessoaModel {
 
+@Entity
+@Table(name = "pessoa")
+public class PessoaModel implements Serializable{
 
-    @Pattern(regexp = "\\d{11}", message = "O CPF deve conter exatamente 11 dígitos.")
-    private long cpf;
+    @Id
+    @Pattern(regexp = "(\\d{11})", message = "O CPF deve conter exatamente 11 dígitos.")
+    private String cpf;
 
-    @Pattern(regexp = "^[A-Za-z]+$", message = "O nome só pode conter letras.")
+    @Pattern(regexp = "^[a-zA-Z0-9\\s]{3,100}$", message = "O nome só pode conter letras.")
     private String nome;
 
-    private TelefoneModel telefone;
+    @OneToMany(mappedBy="pessoa", cascade = CascadeType.ALL)
+    private List<TelefoneModel> telefone;
 
-    private EnderecoModel endereco;
+    @OneToMany(mappedBy="pessoa", cascade = CascadeType.ALL)
+    private List<EmailModel> email;
+
+
+    @OneToOne(mappedBy="pessoa", cascade = CascadeType.ALL)
+    private EnderecoModel enderecoModel;
     
 
-    public TelefoneModel getTelefone() {
+    public List<TelefoneModel> getTelefone() {
         return telefone;
     }
 
-    public void setTelefone(TelefoneModel telefone) {
+    public void setTelefone(List<TelefoneModel> telefone) {
         this.telefone = telefone;
     }
 
-    public long getCpf() {
+    public String getCpf() {
         return cpf;
     }
 
-    public void setCpf(long cpf) {
+    public void setCpf(String cpf) {
         this.cpf = cpf;
     }
 
@@ -44,12 +62,20 @@ public class PessoaModel {
         this.nome = nome;
     }
 
-    public EnderecoModel getEndereco() {
-        return endereco;
+    public List<EmailModel> getEmail() {
+        return email;
     }
 
-    public void setEndereco(EnderecoModel endereco) {
-        this.endereco = endereco;
+    public void setEmail(List<EmailModel> email) {
+        this.email = email;
+    }
+
+    public EnderecoModel getEnderecoModel() {
+        return enderecoModel;
+    }
+
+    public void setEnderecoModel(EnderecoModel enderecoModel) {
+        this.enderecoModel = enderecoModel;
     }
 
 }
