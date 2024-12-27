@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head action = "/home">
+    <meta charset="UTF-8">
+    <title>Bem-vindo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7;
+            text-align: center;
+            margin-top: 50px;
+        }
+        .container {
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            display: inline-block;
+        }
+        h1 {
+            color: #4CAF50;
+        }
+        a {
+            color: #2196F3;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Bem-vindo, <span th:text="${username}">Usuário</span>!</h1>
+        <p>Você está autenticado com sucesso.</p>
+        <p><a href="/logout">Sair</a></p>
+    </div>
+</body>
+</html>

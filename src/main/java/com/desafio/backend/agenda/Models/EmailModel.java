@@ -10,10 +10,10 @@ import java.io.Serializable;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
-import jakarta.validation.constraints.Pattern;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotNull;
 
 /**
  *
@@ -25,11 +25,11 @@ import jakarta.validation.constraints.Pattern;
 public class EmailModel implements Serializable{
 
     @Id
-    @Pattern(regexp = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$", message = "O email não é válido.")
+    @Email(message = "O email não é válido.")
     private String email;
     
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "cpf")
+    @NotNull
     private PessoaModel pessoa;
         
 

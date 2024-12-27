@@ -5,9 +5,9 @@ import java.io.Serializable;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
 
 /**
@@ -21,19 +21,27 @@ public class EnderecoModel implements Serializable{
     
     @Id
     private long id;
-    @Pattern(regexp = "(^\\d{8})", message = "O CEP deve conter exatamente 8 dígitos.")
-    private String cep;
-   
-    private String logradouro;
-    private String complemento;
 
+    @Pattern(regexp = "(^\\d{8})", message = "O CEP deve conter exatamente 8 dígitos.")
+    @NotNull
+    private String cep;
+    
+    @NotNull
+    private String logradouro;
+    
+    private String complemento;
+    
+    @NotNull
     private String bairro;
-  
+    
+    @NotNull
     private String localidade;
+    
+    @NotNull
     private String uf;
     
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "cpf",  nullable = false)
+    @NotNull
     private PessoaModel pessoa;
     
     public PessoaModel getPessoa() {

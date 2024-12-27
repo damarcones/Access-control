@@ -1,14 +1,11 @@
 package com.desafio.backend.agenda.Models;
 
 import java.io.Serializable;
-import java.util.List;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
 
 /**
@@ -18,32 +15,43 @@ import jakarta.validation.constraints.Pattern;
 
 @Entity
 @Table(name = "pessoa")
+// @ValidaSenha
 public class PessoaModel implements Serializable{
 
     @Id
     @Pattern(regexp = "(\\d{11})", message = "O CPF deve conter exatamente 11 dígitos.")
     private String cpf;
 
+    @NotNull
     @Pattern(regexp = "^[a-zA-Z0-9\\s]{3,100}$", message = "O nome só pode conter letras.")
     private String nome;
 
-    @OneToMany(mappedBy="pessoa", cascade = CascadeType.ALL)
-    private List<TelefoneModel> telefone;
+    // @OneToMany(mappedBy="pessoa", cascade = CascadeType.ALL)
+    // private List<TelefoneModel> telefone;
 
-    @OneToMany(mappedBy="pessoa", cascade = CascadeType.ALL)
-    private List<EmailModel> email;
+    // @OneToMany(mappedBy="pessoa", cascade = CascadeType.ALL)
+    // private List<EmailModel> email;
 
-
-    @OneToOne(mappedBy="pessoa", cascade = CascadeType.ALL)
-    private EnderecoModel enderecoModel;
+    // @OneToOne(mappedBy="pessoa", cascade = CascadeType.ALL)
+    // private EnderecoModel enderecoModel;
     
+    // @ManyToOne((mappedBy="pessoa", cascade = CascadeType.ALL))
+    // private RoleModel role;
 
-    public List<TelefoneModel> getTelefone() {
-        return telefone;
+    private String senha;
+
+    private String role;
+
+    public String getSenha() {
+        return senha;
     }
 
-    public void setTelefone(List<TelefoneModel> telefone) {
-        this.telefone = telefone;
+    public void setSenha(String senha) {
+        this.senha = senha;
+    }
+
+    public String getNome() {
+        return nome;
     }
 
     public String getCpf() {
@@ -54,28 +62,18 @@ public class PessoaModel implements Serializable{
         this.cpf = cpf;
     }
 
-    public String getNome() {
-        return nome;
-    }
-
     public void setNome(String nome) {
         this.nome = nome;
     }
 
-    public List<EmailModel> getEmail() {
-        return email;
+    public String getRole() {
+        return role;
     }
 
-    public void setEmail(List<EmailModel> email) {
-        this.email = email;
+    public void setRole(String role) {
+        this.role = role;
     }
 
-    public EnderecoModel getEnderecoModel() {
-        return enderecoModel;
-    }
-
-    public void setEnderecoModel(EnderecoModel enderecoModel) {
-        this.enderecoModel = enderecoModel;
-    }
+    
 
 }

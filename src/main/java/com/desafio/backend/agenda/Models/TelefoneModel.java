@@ -5,12 +5,11 @@ import java.io.Serializable;
 import com.desafio.backend.agenda.Enums.TipoTelefoneEnum;
 import com.desafio.backend.agenda.Validacao.ValidaTelefone;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotNull;
 
 /**
  *
@@ -22,13 +21,12 @@ import jakarta.persistence.Table;
 public class TelefoneModel implements Serializable{
 
     @Id
-    // @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String telefone;
 
     private TipoTelefoneEnum tipo;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "cpf")
+    @ManyToOne
+    @NotNull
     private PessoaModel pessoa;
 
     public TipoTelefoneEnum getTipo() {
