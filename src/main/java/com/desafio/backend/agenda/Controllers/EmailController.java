@@ -45,7 +45,7 @@ public class EmailController {
         return emailRepository.findAll();
     }
 
-    @GetMapping("procura")
+    @GetMapping("procura/{email}")
     public EmailModel procura(@PathVariable String email) {
         return emailRepository.findById(email).orElseThrow(() -> new RuntimeException("Email não encontrada"));
     }
