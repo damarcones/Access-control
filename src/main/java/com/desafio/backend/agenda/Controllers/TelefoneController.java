@@ -46,7 +46,7 @@ public class TelefoneController {
     public List<TelefoneModel> listar() {
         return telefoneRepository.findAll();
     }
-    @GetMapping("procura")
+    @GetMapping("procura/{telefone}")
     public TelefoneModel procura(@PathVariable String telefone) {
         return telefoneRepository.findById(telefone).orElseThrow(() -> new RuntimeException("Telefone não encontrado"));
     }
