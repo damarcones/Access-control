@@ -9,5 +9,5 @@ import com.desafio.backend.agenda.Models.EnderecoModel;
  * @author damarcones
  */
 public interface EnderecoRepository extends JpaRepository<EnderecoModel, Integer> {
-
-}
+    
+}  

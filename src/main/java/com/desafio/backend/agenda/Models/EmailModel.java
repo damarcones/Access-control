@@ -7,13 +7,12 @@ package com.desafio.backend.agenda.Models;
 
 import java.io.Serializable;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.NotNull;
 
 /**
  *
@@ -28,8 +27,8 @@ public class EmailModel implements Serializable{
     @Email(message = "O email não é válido.")
     private String email;
     
-    @ManyToOne(cascade = CascadeType.ALL)
-    @NotNull
+    @ManyToOne
+    @JoinColumn(name = "cpf",  nullable = false)
     private PessoaModel pessoa;
         
 

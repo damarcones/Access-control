@@ -10,4 +10,5 @@ import com.desafio.backend.agenda.Models.EmailModel;
  */
 public interface EmailRepository extends JpaRepository<EmailModel, String>{
 
+
 }

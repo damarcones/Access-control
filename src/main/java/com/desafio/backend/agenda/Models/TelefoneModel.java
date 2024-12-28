@@ -7,14 +7,15 @@ import com.desafio.backend.agenda.Validacao.ValidaTelefone;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
-import jakarta.validation.constraints.NotNull;
 
 /**
  *
  * @author damarcones
  */
+
 @Entity
 @Table(name = "telefone")
 @ValidaTelefone
@@ -26,7 +27,7 @@ public class TelefoneModel implements Serializable{
     private TipoTelefoneEnum tipo;
 
     @ManyToOne
-    @NotNull
+    @JoinColumn(name = "cpf",  nullable = false)
     private PessoaModel pessoa;
 
     public TipoTelefoneEnum getTipo() {

@@ -15,7 +15,7 @@ public class SegurancaConfig {
 
 
     public static final String[] ENDPOINTS_USER = {
-        "/home"
+        "/home","**/listar", "**/procura"
     };
 
     public static final String[] ENDPOINTS_ADMIN = {

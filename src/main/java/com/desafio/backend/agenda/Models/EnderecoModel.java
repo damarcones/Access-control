@@ -2,9 +2,9 @@ package com.desafio.backend.agenda.Models;
 
 import java.io.Serializable;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotNull;
@@ -40,8 +40,8 @@ public class EnderecoModel implements Serializable{
     @NotNull
     private String uf;
     
-    @OneToOne(cascade = CascadeType.ALL)
-    @NotNull
+    @OneToOne
+    @JoinColumn(name = "cpf",  nullable = false)
     private PessoaModel pessoa;
     
     public PessoaModel getPessoa() {

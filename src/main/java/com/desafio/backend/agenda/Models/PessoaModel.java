@@ -15,7 +15,6 @@ import jakarta.validation.constraints.Pattern;
 
 @Entity
 @Table(name = "pessoa")
-// @ValidaSenha
 public class PessoaModel implements Serializable{
 
     @Id
@@ -25,18 +24,6 @@ public class PessoaModel implements Serializable{
     @NotNull
     @Pattern(regexp = "^[a-zA-Z0-9\\s]{3,100}$", message = "O nome só pode conter letras.")
     private String nome;
-
-    // @OneToMany(mappedBy="pessoa", cascade = CascadeType.ALL)
-    // private List<TelefoneModel> telefone;
-
-    // @OneToMany(mappedBy="pessoa", cascade = CascadeType.ALL)
-    // private List<EmailModel> email;
-
-    // @OneToOne(mappedBy="pessoa", cascade = CascadeType.ALL)
-    // private EnderecoModel enderecoModel;
-    
-    // @ManyToOne((mappedBy="pessoa", cascade = CascadeType.ALL))
-    // private RoleModel role;
 
     private String senha;
 
@@ -73,7 +60,5 @@ public class PessoaModel implements Serializable{
     public void setRole(String role) {
         this.role = role;
     }
-
-    
 
 }
