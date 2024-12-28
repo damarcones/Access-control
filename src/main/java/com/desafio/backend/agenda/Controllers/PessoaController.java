@@ -39,7 +39,7 @@ public class PessoaController {
         return pessoaRepository.findAll();
     }
 
-    @GetMapping("procura")
+    @GetMapping("procura/{cpf}")
     public PessoaModel procura(@PathVariable String cpf) {
         return pessoaRepository.findById(cpf).orElseThrow(() -> new RuntimeException("Pessoa não encontrada"));
     }
