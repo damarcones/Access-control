@@ -1,7 +1,6 @@
-# Desafio SEA
+# Desafio
 
-Documentação da API
-Descrição
+## Descrição
 Este é um projeto que fornece uma API REST para gerenciar o cadastro básico de funcionários e clientes.
 
 ## Credenciais de Login
